@@ -1,2 +1,2 @@
 # lets-crawl-first
-# Bertram has visitied here.(This is a test)
+# Bertram has visited here.(This is a test)
