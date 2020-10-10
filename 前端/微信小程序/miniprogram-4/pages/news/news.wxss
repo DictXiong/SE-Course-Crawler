@@ -1,0 +1,41 @@
+/* pages/news/news.wxss */
+.scrview{
+  height: 100%;
+  background-color: #fff;
+}
+.newscard{
+  border: 2rpx solid black;
+  display: flex;
+  flex-direction: row;
+  margin-top: 30rpx;
+  background-color: #eee;
+  height: 270rpx;
+}
+.newsicon{
+  margin-top: 20rpx;
+  width: 100rpx;
+}
+.newscardtext{
+  background-color: rgb(248, 238, 220);
+  display: flex;
+  flex-direction: column;
+  margin-top: 5rpx;
+  margin-bottom: 5rpx;
+  margin-left: 5rpx;
+  margin-right: 5rpx;
+}
+.newstitle{
+  font-size: 60rpx;
+}
+.newsabstract{
+  font-size: 40rpx;
+  margin-top: 20rpx;
+  background-color: rgb(214, 247, 214);
+  color: #777;
+}
+.newsviews{
+  font-size: 30rpx;
+  text-align: right;
+  background-color: rgb(211, 211, 250);
+  color: gray;
+}

@@ -1,0 +1,36 @@
+{
+  "pages":[
+    "pages/login/login",
+    "pages/news/news",
+    "pages/me/me",
+    "pages/find/find",
+    "pages/message/message"
+  ],
+  "window":{
+    "backgroundTextStyle":"light",
+    "navigationBarBackgroundColor": "#fff",
+    "navigationBarTitleText": "THU Info",
+    "navigationBarTextStyle":"black"
+  },
+  "tabBar": {
+    "selectedColor": "red",
+    "list": [{
+      "iconPath": "/images/news.jpg",
+      "selectedIconPath": "/images/news.jpg",
+      "pagePath": "pages/news/news",
+      "text": "新闻"
+    },{
+      "iconPath": "/images/me.jpg",
+      "selectedIconPath": "/images/me.jpg",
+      "pagePath": "pages/me/me",
+      "text": "我的"
+    },{
+      "iconPath": "/images/find.jpg",
+      "selectedIconPath": "/images/find.jpg",
+      "pagePath": "pages/find/find",
+      "text": "发现"
+    }]
+  },
+  "style": "v2",
+  "sitemapLocation": "sitemap.json"
+}

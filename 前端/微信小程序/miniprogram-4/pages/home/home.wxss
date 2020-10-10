@@ -1,0 +1,17 @@
+/* pages/home/home.wxss */
+navigator{
+  font-size: 30rpx;
+  margin-top: 15rpx;
+}
+
+.navigator-hover{
+  color: blue;
+}
+
+.other-navigator-hover{
+  color: red;
+}
+
+button{
+  margin-top: 30rpx;
+}

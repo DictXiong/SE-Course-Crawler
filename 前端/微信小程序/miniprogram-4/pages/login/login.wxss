@@ -1,0 +1,37 @@
+/* pages/login/login.wxss */
+.img1{
+  border: violet;
+  width: 50%;
+  margin-top: 50rpx;
+  margin-left: 25%;
+}
+.text1{
+  margin-top: 30rpx;
+  text-align: center;
+  margin-bottom: 100rpx;
+  font-size: 60rpx;
+  color: darkmagenta;
+}
+.input1{
+  width: 60%;
+  background-color: #eee;
+  text-align: center;
+  margin-top: 10rpx;
+  margin-left: 20%;
+}
+.input2{
+  width: 60%;
+  background-color: #eee;
+  text-align: center;
+  margin-top: 20rpx;
+  margin-left: 20%;
+}
+.btn1{
+  margin-top: 100rpx;
+}
+.hr{
+
+}
+.ipt{
+  border: 5px mediumpurple;
+}

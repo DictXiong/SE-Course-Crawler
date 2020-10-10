@@ -1,0 +1,20 @@
+<!--pages/home/home.wxml-->
+<view class="btn-area">
+  <navigator url="../navigator/navigator?title=Navigator" open-type="navigate" hover-class="navigator-hover">
+    wx.navigator()功能，保留当前页跳转，可返回
+  </navigator>
+
+  <navigator url="../navigator/navigator?title=Redirect" open-type="redirect" hover-class="other-navigator-hover">
+    wx.navigator()功能，关闭当前页跳转，不可返回
+  </navigator>
+
+  <navigator url="../redirect/redirect?title=Switch" open-type="switchTab" hover-class="other-navigator-hover">
+    wx.navigator()功能，前往导航页，不可返回
+  </navigator>
+
+  <!--js事件：触发页面跳转-->
+  <!--bindtab 绑定一个函数作为点击触发的响应-->
+  <button type="primary" bindtap="navigatorBtn">navigator</button>
+  <button type="primary" bindtap="redirectBtn">redirect</button>
+  <button type="primary" bindtap="switchBtn">switchTab</button>
+</view>

@@ -1,0 +1,18 @@
+<!--pages/news/news.wxml-->
+<scroll-view class="scrview" scroll-y="{{true}}">
+  <block wx:for="{{array}}">
+    <navigator class="navmsg" url="/pages/message/message">
+      <view class="newscard">
+        <view>  
+          <image class="newsicon" src="{{item.img}}" mode="widthFix"></image>
+        </view>
+        <view class="newscardtext">
+          <text class="newstitle">{{item.title}}</text>
+          <text class="newsabstract">{{item.abstract}}</text>
+          <text class="newsviews">{{item.views}}</text>
+        </view>
+      </view>
+    </navigator>
+  </block>
+
+</scroll-view>
