@@ -4,7 +4,7 @@ import pandas as pd
 
 class WeChatArticlesInfo(object):
     """
-    获取微信公众号的推文信息
+    获取微信公众号的推文信息，包含url，可进一步获取content
     """
     COLUMNS = ['aid', 'title', 'cover_url', 'abstract', 'url', 'time']
     INFO_KEY = "app_msg_list"
@@ -116,7 +116,6 @@ class WeChatArticlesInfo(object):
         Return:
             pd.DataFrame
         """
-        nsteps = int(count / 5) + 1
         step = 0
         data = []
         while 5 * step < count:
@@ -124,6 +123,7 @@ class WeChatArticlesInfo(object):
             step = step + 1
             #time.sleep(0.01)
         return pd.DataFrame.from_records(data)
+
 
 if __name__ == "__main__":
     cookie = input("Please input cookie:\n")

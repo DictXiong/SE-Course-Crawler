@@ -1,19 +1,20 @@
 import re
+import datetime
 import requests
 from bs4 import BeautifulSoup
 import pandas as pd
 
 class LecturesData(object):
     '''
-    获取讲座的信息
+    获取info讲座的数据
     '''
-    COLUMNS = ['title', 'reporter', 'time', 'place', 'holder']
+    COLUMNS = ['title', 'reporter', 'time', 'place', 'holder', 'content', 'url']
     def __init__(self):
         self.root_url = "https://kyybgxx.cic.tsinghua.edu.cn/kybg/xsgg/"
         self.root = requests.get(self.root_url)
         self.root_bs = BeautifulSoup(self.root.text, 'lxml')
-        self.raw_columns = ['报告题目:', '报告人:', '报告时间:', '报告地点:', '主办单位:', '简介:', '链接:']
-        self.columns = ['title', 'reporter', 'time', 'place', 'holder', 'abstract', 'url']
+        self.raw_columns = ['报告题目:', '报告人:', '报告时间:', '报告地点:', '主办单位:', '内容:', '链接:']
+        self.columns = ['title', 'reporter', 'time', 'place', 'holder', 'content', 'url']
         self.col_dict = dict(zip(self.raw_columns, self.columns))
     
     def get_lectures_details(self, detail_url:str):
@@ -38,10 +39,15 @@ class LecturesData(object):
                 s = node.string.strip()
                 if s in self.raw_columns:
                     col = self.col_dict[s]
-                    if col == 'abstract':
-                        detail_tr_dict['abstract'] = ' '.join(tds[1].text.split())
+                    if col == 'content':
+                        detail_tr_dict['content'] = '\n'.join(tds[1].text.split())
                     else:
                         detail_tr_dict[col] = tds[1].string
+        if len(detail_tr_dict['time'].strip()) == 16:
+            detail_tr_dict['time'] = int(datetime.datetime.strptime(detail_tr_dict['time'].strip(), "%Y-%m-%d %H:%M").timestamp())
+        else:
+            #如果格式不对则标记为-1留空
+            detail_tr_dict['time'] = -1
         detail_tr_dict['url'] = detail_url
         return detail_tr_dict
 
@@ -56,7 +62,6 @@ class LecturesData(object):
             list of dict
         """
         tag_data_list=[]
-        tag = tag_node.string
         tag_url = tag_node['href']
         tag_url = self.root_url + tag_url
         tag_page = requests.get(tag_url)
@@ -64,7 +69,6 @@ class LecturesData(object):
         while True:
             tag_bs = BeautifulSoup(tag_page.text, 'lxml')
             lec_trs = tag_bs.find_all('tr')
-            ccc=0
             for tr in lec_trs:
                 # if tr.get('bgcolor', None) is None or tr.get('class', None) is not None:
                 #     continue
@@ -84,7 +88,7 @@ class LecturesData(object):
                 # if len(tag_data_list) > 4:
                 #     print(pd.DataFrame(tag_data_list))
                 #     break
-            nextpage_node=tag_bs.find('a', string=re.compile('.*下.*页.*'))
+            nextpage_node=tag_bs.find(name='a', string=re.compile('.*下.*页.*'))
             if nextpage_node is None:
                 break
             nextpage_url = self.root_url + nextpage_node['href']
@@ -108,7 +112,6 @@ class LecturesData(object):
         data_dict = {}
         count = 0
         for tag_root in root_trs:
-            tag_data_list = []
             tag_node = tag_root.find('a')
             if tag_node is None:
                 break
