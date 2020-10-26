@@ -1,0 +1,35 @@
+{
+  "pages": [
+    "pages/dayi/dayi",
+    "pages/wode/wode",
+    "pages/luntan/luntan"
+    
+  ],
+  "tabBar": {
+    "list": [{
+      "pagePath": "pages/wode/wode",
+      "iconPath": "image/icon/tabBar/setting0.png",
+      "selectedIconPath": "image/icon/tabBar/setting1.png",
+      "text": "我的"
+    },{
+      "pagePath": "pages/dayi/dayi",
+      "iconPath": "image/icon/tabBar/order0.png",
+      "selectedIconPath": "image/icon/tabBar/order1.png",
+      "text": "答疑"
+    },{
+      "pagePath": "pages/luntan/luntan",
+      "iconPath": "image/icon/tabBar/message0.png",
+      "selectedIconPath": "image/icon/tabBar/message1.png",
+      "text": "论坛"
+    }]
+  },
+  "window": {
+    "backgroundColor": "#F6F6F6",
+    "backgroundTextStyle": "light",
+    "navigationBarBackgroundColor": "#F6F6F6",
+    "navigationBarTitleText": "清答疑",
+    "navigationBarTextStyle": "black"
+  },
+  "sitemapLocation": "sitemap.json",
+  "style": "v2"
+}
