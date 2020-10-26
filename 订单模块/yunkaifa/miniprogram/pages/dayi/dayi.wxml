@@ -1,0 +1,21 @@
+<scroll-view class="scrview" scroll-y="{{true}}">
+  <block wx:for="{{orderArr}}">
+    <i-swipeout  i-class="i-swipeout" operateWidth="{{180}}" unclosable="{{true}}" toggle="{{toggle}}">
+        <view slot="content">
+            <view class="i-swipeout-image">
+                <i-icon size="20" color="#FFFFFF" custom="../../image/icon/subjects/{{item.sname}}.png"></i-icon>
+           </view>
+           <view class="i-swipeout-des">
+                <view class="i-swipeout-des-h2">{{item.cname}} {{item.class}}-{{item.name}}</view>
+                <view class="i-swipeout-des-detail">{{item.abstract}}</view>
+           </view>
+        </view>
+        <view slot="button" class="i-swipeout-button-group" style="background:#2db7f5;">
+            <view class="i-swipeout-button" style="width:60px" bindtap="actionsTap"><i-icon class="i-swipeout-button-icon" size="32" type="like_fill"></i-icon></view>
+            <view class="i-swipeout-button" style="width:60px" bindtap="actionsTap"><i-icon class="i-swipeout-button-icon" size="32" type="share_fill"></i-icon></view>
+            <view class="i-swipeout-button" style="width:60px" bindtap="actionsTap"><i-icon class="i-swipeout-button-icon" size="32" type="delete_fill"></i-icon></view>
+        </view>
+    </i-swipeout>
+  </block>
+</scroll-view>
+
