@@ -10,7 +10,7 @@
     "minified": true,
     "newFeature": true,
     "coverView": true,
-    "nodeModules": false,
+    "nodeModules": true,
     "autoAudits": false,
     "showShadowRootInWxmlPanel": true,
     "scopeDataCheck": false,
@@ -32,11 +32,12 @@
     "packNpmManually": false,
     "packNpmRelationList": []
   },
-  "appid": "wx8b91b45a41294ff6",
+  "appid": "wxc808cd22cdb82407",
   "projectname": "%E4%BA%91%E5%BC%80%E5%8F%91%E7%A4%BA%E4%BE%8B",
   "libVersion": "2.8.1",
   "simulatorType": "wechat",
   "simulatorPluginLibVersion": {},
+  "cloudfunctionTemplateRoot": "cloudfunctionTemplate",
   "condition": {
     "search": {
       "current": -1,
