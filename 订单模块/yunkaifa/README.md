@@ -10,3 +10,4 @@
 
 - [云开发文档](https://developers.weixin.qq.com/miniprogram/dev/wxcloud/basis/getting-started.html)
 
+Note: 所有的异步操作(即数据库的操作)的后续操作均应在上级操作的then中，且均需要return结果
