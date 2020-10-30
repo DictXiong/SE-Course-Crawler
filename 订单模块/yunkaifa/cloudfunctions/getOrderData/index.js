@@ -82,8 +82,8 @@ function queryVolunteer0(uid, state, start, count, conds){
       var subjects = [];
       for(let vinfo in res.data){
         subjects.push(vinfo.sid);
-        conds.sid = _.in(subjects);
       }
+      conds.sid = _.in(subjects);
       return queryOrderData(conds, start, count);
     })
 }
