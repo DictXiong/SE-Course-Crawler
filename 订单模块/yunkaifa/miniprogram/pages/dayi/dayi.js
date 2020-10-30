@@ -31,7 +31,7 @@ Page({
     .then(res=>{
       console.log(res);
       this.setData({
-        orderArr:res.result.data
+        orderArr:res.result.list
       })
       console.log(this.data.orderArr);
       //关闭加载信息

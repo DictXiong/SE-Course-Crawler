@@ -3,7 +3,7 @@
     <i-swipeout  i-class="i-swipeout" operateWidth="{{180}}" unclosable="{{true}}" toggle="{{toggle}}">
         <view slot="content">
             <view class="i-swipeout-image">
-                <i-icon size="20" color="#FFFFFF" custom="../../image/icon/subjects/{{item.sname}}.png"></i-icon>
+                <i-icon size="20" color="#555555" custom="/miniprogram/image/icon/subjects/{{item.sname}}.png"></i-icon>
            </view>
            <view class="i-swipeout-des">
                 <view class="i-swipeout-des-h2">{{item.cname}} {{item.class}}-{{item.name}}</view>

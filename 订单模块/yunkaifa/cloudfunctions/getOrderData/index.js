@@ -38,7 +38,14 @@ exports.main = async (event, context) => {
           return queryVolunteer0(uid, state, start, count, conds);
         }
         else{
-          conds.auid = _.eq(uid);
+          conds = _.or([{
+            state: _.eq(state),
+            puid: _.eq(uid)
+          },
+          {
+            state: _.eq(state),
+            auid: _.eq(uid)
+          }])
         }
         break;
       case "用户":
@@ -75,19 +82,61 @@ function queryVolunteer0(uid, state, start, count, conds){
       var subjects = [];
       for(let vinfo in res.data){
         subjects.push(vinfo.sid);
-        conds.sid = _.in(subjects);
       }
+      conds.sid = _.in(subjects);
       return queryOrderData(conds, start, count);
     })
 }
 
 function queryOrderData(conds, start, count){
   return db.collection(orderTableName)
-  .where(conds)
+  .aggregate()
+  .match(conds)
   .skip(start)
   .limit(count)
-  .get()
+  .lookup({
+    from: "Subject",
+    localField: "sid",
+    foreignField: "sid",
+    as:"temp"
+  })
+  .replaceRoot({
+    newRoot: $.mergeObjects([$.arrayElemAt(["$temp", 0]), '$$ROOT'])
+  })
+  .project({
+    "temp": 0
+  })
+  .lookup({
+    from: "Class",
+    localField: "cid",
+    foreignField: "cid",
+    as:"temp"
+  })
+  .replaceRoot({
+    newRoot: $.mergeObjects([$.arrayElemAt(["$temp", 0]), '$$ROOT'])
+  })
+  .project({
+    "temp": 0
+  })
+  .lookup({
+    from: "UserInfo",
+    localField: "puid",
+    foreignField: "uid",
+    as:"temp"
+  })
+  .replaceRoot({
+    newRoot: $.mergeObjects([$.arrayElemAt(["$temp", 0]), '$$ROOT'])
+  })
+  .project({
+    "temp": 0
+  })
+  .end()
   .then(res=>{
+    // console.log(res); 
     return res;
   })
+  .catch(err=>{
+    // console.log(err);
+    return null;
+  });
 }
